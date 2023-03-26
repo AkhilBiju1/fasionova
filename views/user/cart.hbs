@@ -1,0 +1,70 @@
+<section>
+    <div id="emptydiv" class="container ">
+        {{#if products}}
+        <table id="oldtable" class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Title</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Size</th>
+                    <th scope="col">Quantity</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+
+                {{#each products}}
+
+
+                <tr id="div{{this._id}}">
+
+                    <td><img style="height: 100px; width: 100px;" src="/product-images/{{this.item._id}}.png" alt="">
+                    </td>
+                    <td>{{this.item.name}}</td>
+                    <td>Rs. {{this.item.price}}</td>
+                    <td style="text-transform:uppercase;"> {{this.item.size}}</td>
+                    <td>
+                        {{#quantitymin this.quantity 1}}
+                        <button style="font-size: 20px;" id="decri{{this._id}}" disabled="true"
+                            class="cart-item-count  border-0 font-weight-bold  bg-white mr-3  rounded-circle"
+                            onclick="changeQuantity('{{this._id}}',-1)">-</button>
+                        {{else}}
+                        <button style="font-size: 20px;" id="decri{{this._id}}"
+                            class=" rounded-circle border-0 cart-item-count  font-weight-bold  bg-white mr-3"
+                            onclick="changeQuantity('{{this._id}}',-1)">-</button>
+                        {{/quantitymin}}
+                        <span id="{{this._id}}">{{this.quantity}}</span>
+                        <button style="font-size: 20px;"
+                            class="border-0 cart-item-count ml-3 font-weight-bold  bg-white  rounded-circle"
+                            onclick="changeQuantity('{{this._id}}',1)">+</button>
+                    </td>
+                   
+                    <td><a onclick="deleteProduct('{{this._id}}','{{this.item.name}}','{{this.item._id}}')"
+                            class="btn btn-danger">Remove</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <hr>
+        <div class="float-right">
+            <h3 id="totalprice" class="mt-2 ">Total : Rs. {{total}}</h3>
+            <a href="/place-order" class="mt-2  btn btn-outline-success">Place Order</a>
+        </div>
+        <div>
+            
+        </div>
+        
+        {{else}}
+        <table style="height: calc(100vh - 56px); width: 100%;">
+            <tbody>
+                <tr>
+                    <td class="align-middle">
+                        <h4 style="text-align: center; color: #6e6e6e87;">Cart is empty</h4>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {{/if}}
+    </div>
+</section>

@@ -1,0 +1,30 @@
+<section>
+
+    <div class="container  mb-4" style="max-width: 100%; padding-left: 1%; padding-right: 1%; ">
+        
+
+        <div class=" row " id="myTable">
+            {{#each products}}
+            <div id="mytr" class="col-xl-3 col-md-4 col-sm-6  mt-2 mb-4 ">
+                <div class="card "
+                    style=" box-shadow: 0 4px 8px 0 rgba(12, 41, 134, 0.2), 0 6px 20px 0 rgba(5, 55, 117, 0.1);">
+                    <img style="height: 120px;width: 100px;" src="/product-images/{{this._id}}.png"
+                        class="card-img-top mx-auto pt-2" alt="...">
+                    <div class="card-body">
+                        <h3 style="color: #1b4d86;!important" class="card-title  text-center">{{this.name}}</h3>
+                        <h5 style="color: #464646;!important" class="  text-center">{{this.category}}</h5>
+                        <p style="font-size: 19px;" class="card-text text-dark text-center">₹{{this.disprice}} MRP : ₹<s class="text-secondary">{{this.price}}</s><span style="color: rgb(248, 101, 47);"> {{this.off}}% off</span></p>
+                        <p style="font-size: 19px;color: #1b4d86;"  class="text-center card-text" >Size : <span style="text-transform:uppercase;">{{this.size}}</span><br>Gender :{{this.gender}} </p>
+                        <button style="background-color: #1b4d86; color:#ffffff;" onclick="addToCart('{{this._id}}')"
+                            class="rounded mx-auto d-block btn "><img src="\icons\add-shopping-cart.png" alt="">Add
+                            To Cart </button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+<script>
+   
+</script>

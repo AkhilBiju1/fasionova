@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/datatable.css">
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/sweetalert2.min.css">
+    <link rel="stylesheet" href="/stylesheets/layout.css">
+    <link rel="icon" href="/images/shopping-bag.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FASIONOVA</title>
+
+</head>
+
+<body>
+    {{#if admin}}
+    {{>admin-header}}
+    {{else}}
+    {{>user-header}}
+    {{/if}}
+    {{{body}}}
+
+</body>
+<script src="/javascripts/jquery-3.6.0.min.js"></script>
+<script src="/javascripts/sweetalert2.all.min.js"></script>
+<script src="/javascripts/bootstrap.js"></script>
+<script src="/javascripts/owl.carousel.min.js"></script>
+<script src="/javascripts/script.js"></script>
+<script src="/javascripts/datatable.js"></script>
+<script src="/javascripts/index.js"></script>
+</html>

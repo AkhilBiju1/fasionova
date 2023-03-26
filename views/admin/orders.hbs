@@ -1,0 +1,47 @@
+<section>
+    <div class="container mt-4">
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th><th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each order}}
+                <tr>
+                    <td>{{this.deliveryDetails.firstname}} {{this.deliveryDetails.lastname}}</td>
+                    <td>{{this.deliveryDetails.address}},{{this.deliveryDetails.pincode}}</td>
+                    <td>{{this.deliveryDetails.mobile}}</td>
+
+                    <td>{{this.date}}</td>
+                    <td>{{this.total}}</td>
+                    <td>{{this.status}}</td>
+                    <td><a style="background-color: #1b4d86; color:rgb(255, 255, 255)" class="btn btnn" href="/admin/order-product/{{this._id}}">View Products</a></td>
+                    {{#order this.status 'Placed' }}
+                    <td><a style="background-color: #0083e1; color:rgb(255, 255, 255)" class="btn btnn"href="/admin/update-order/{{this._id}}" onclick="return confirm('Conform Shipped ?')">conform shipped</a></td>
+                    {{else}}
+                    {{#order this.status 'Pending'}}
+                    {{else}}
+                    {{#order this.status 'Delivered'}}
+                    <td>
+                        <p class=" text-success">Delivered</p>
+                    </td>
+                    {{else}}
+                    <td><a style="background-color: #28a745; color:rgb(255, 255, 255)" class="btn btnn" href="/admin/update-order/{{this._id}}" onclick="return confirm(' Conform Delivered ?')">conform Delivered</a></td>
+                    {{/order}}                  
+                    {{/order }}
+                    {{/order}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

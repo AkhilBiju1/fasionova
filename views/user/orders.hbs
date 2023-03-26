@@ -1,0 +1,65 @@
+<section>
+    <div class="container mt-4">
+       
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                   
+                    <th scope="col">Address</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Status</th>
+                    
+                    <th scope="col"></th>
+                    
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each order}}
+                <tr>
+                    
+                    <td>{{this.deliveryDetails.address}},{{this.deliveryDetails.pincode}}</td>
+                    <td>{{this.deliveryDetails.mobile}}</td>
+
+                    <td>{{this.date}}</td>
+                    <td>{{this.total}}</td>
+                    <td>{{this.status}}</td>
+                   
+                    <td><a class="btn btnn btn-primary" href="/order-product/{{this._id}}">View Products</a></td>
+                    {{#order this.status 'Pending'}}
+                    <td>
+                        <div >
+                            <button  class=" button{{this._id}} btn btn-outline-success" onclick="updateorder('{{this._id}}')">Conform Payment</button>
+                            <form class="option{{this._id}}" hidden="true" id='payment-conform'>
+                        <div class="d-block my-3" style="display: flex;justify-content: space-between;padding-left:35px;">
+                            <div class="custom-control custom-radio mr-2 " style="float: left;">
+                                <input id="online" name="paymentMethod" value="ONLINE" type="radio" class="custom-control-input" checked=""
+                                    required="">
+                                <label class="custom-control-label" for="online">Online Payment</label>
+                            </div><br>
+                            <div class="custom-control custom-radio" style="float: left;">
+                                <input id="cod" name="paymentMethod" value="COD" type="radio" class="custom-control-input" required="">
+                                <label class="custom-control-label" for="cod">COD</label>
+                                <input type="text" value="{{user._id}}" name="userId" hidden="true">
+                            </div><br>
+                            <input type="text"name='orderid' value='{{this._id}}' hidden>
+                        </div>
+                    
+                        <center>
+                            <button style="width:120px; padding:0;" class="btn  mt-4 btn-primary btn-lg btn-block"
+                                type="submit">Conform</button>
+                        </center>
+                    </form>
+                    </div>
+                    </td>
+
+                    {{/order}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>

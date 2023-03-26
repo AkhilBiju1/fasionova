@@ -1,0 +1,117 @@
+<section class="h-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-12">
+                <div class="card" style="border-radius: 10px;">
+                    
+                    <div class="card-body p-4">
+
+                        {{#each order.products}}
+                        <div class="card shadow-2 border mb-4">
+
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+
+                                        <img style="height: 100px;" src="/product-images/{{this.item._id}}.png"
+                                            class="img-fluid" alt="Phone">
+                                    </div>
+
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0">{{this.item.name}}</p>
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small">Qty: {{this.quantity}}</p>
+                                    </div>
+                                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                        <p class="text-muted mb-0 small">Rs.{{this.item.price}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        {{/each}}
+                        <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                        <div class="row d-flex align-items-center">
+                            <div class="col-md-2">
+                                <p class="text-muted mb-0 small">Track Order</p>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="progress" style="height: 6px; border-radius: 16px;">
+                                    <div class="progress-bar" role="progressbar" style="width:
+                                        {{#order order.status 'Placed'}}
+                                         6%; 
+                                         {{else}}
+                                           {{#order order.status 'Out for delivary'}}
+                                           50% ;
+                                           {{else}}
+                                              {{#order order.status 'Delivered'}}
+                                              100%;
+                                              {{/order}}
+                                          {{/order}}
+                                        {{/order}}
+                                        
+                                       
+                                       
+                                       
+                                         border-radius: 16px; background-color:#1b4d86;" aria-valuenow="25"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="d-flex  mb-1" style="justify-content: space-between;">
+                                    <p class="
+                                     {{#order order.status 'Placed'}}
+                                    text-success
+                                     {{else}}
+                                     text-muted
+                                     {{/order}}
+                                     mt-1 mb-0 small ms-xl-5">Order placed</p>
+                                    <p class="
+                                    {{#order order.status 'Out for delivary'}}
+                                    text-success
+                                    {{else}}
+                                    text-muted 
+                                    {{/order}}
+                                    mt-1 mb-0 small ms-xl-5">Out for delivary</p>
+                                    <p class="
+                                    {{#order order.status 'Delivered'}}
+                                        text-success
+                                    {{else}}
+                                    text-muted
+                                    {{/order}} 
+                                    
+                                    mt-1 mb-0 small ms-xl-5">Delivered</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+
+                        <div class="d-flex justify-content-between pt-2">
+                            <p class="fw-bold mb-0">Order Details</p>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between pt-2">
+                            <p class="text-muted mb-0">
+                                {{order.deliveryDetails.address}},{{order.deliveryDetails.pincode}},{{order.deliveryDetails.mobile}}
+                            </p>
+                            <p class="text-muted mb-0"><span class="fw-bold me-4">Price :</span> Rs.{{order.total}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between pt-2">
+                            <p class="text-muted mb-0">Date of Order : {{order.date}}</p>
+                            <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
+
+                        </div>
+
+                    </div>
+                    <div class="card-footer border-0 px-4 py-5"
+                        style="background-color:#1b4d86; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        <h2 class="d-flex align-items-center justify-content-end text-white  mb-0">Total :
+                            Rs.{{order.total}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

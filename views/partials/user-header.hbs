@@ -1,0 +1,64 @@
+<header style="position: fixed; z-index: 1; width: 100%; ">
+    <nav style="background-color: #1b4d86;padding: 10px 4px;" class="navbar navbar-light navbar-expand-lg  ">
+        <a style="color: #ffffff;!important " class="navbar-brand " href="/"><img style="height: 50px; " src="/images/logo.png" alt="" srcset=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+            <ul class="navbar-nav mr-auto">
+                
+                <li class="nav-item active">
+                    <a style="color: #ffffff;!important" class="nav-link " href="/products">Products <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a id="cart" style="color: #ffffff;!important" class="nav-link " href="/cart">Cart
+                        {{#quantitymin cartCount 0}}
+                        {{else}}
+                        <sup><span class="badge mb-2 "
+                            style=" font-size:10px; color: #1b4d86; background-color:#ffffff ;border-radius:40% 40% 40% 0;!important"
+                            id="cart-count">{{cartCount}}</span></sup>
+                       
+                        {{/quantitymin}}
+                    </a>
+                </li>
+                {{#if user}}
+                <li class="nav-item">
+                    <a style="color: #ffffff;!important" class="nav-link " href="/order">Orders</a>
+                </li>
+                {{/if}}
+               
+            </ul>
+            {{#if searchbar}}
+            <form class="form-inline my-2 my-lg-0">
+                <input id="myinput" style="border-color:#ffffff;" class="form-control mr-sm-2" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button  style="border:  #ffffff solid 2px!important; color:#ffffff;" class="btn btnn my-2 my-sm-0"
+                    type="button" id="myClick">Search</button>
+            </form>
+            {{/if}}
+               
+            {{#if user}}
+          
+            
+            <a  style="border:  #ffffff solid 2px!important; color:#ffffff;" class="btn btnn  my-2 my-sm-0 ml-2"
+                href="/logout">Logout</a>
+            {{else}}
+            <a  style="border:  #ffffff solid 2px!important; color:#ffffff;" class="btn btnn my-2 my-sm-0 ml-2"
+                href="/login">LogIn</a>
+            {{/if}}
+            {{#if user}}
+            <a href="/profile"><span style="color: #ffffff;!important" class=" ml-2 mr-2 ">
+                    <img src="/icons/user.png" />
+                </span></a>
+            {{/if}}
+   
+
+        </div>
+    </nav>
+  
+</header>
+<div style="height: 100px; z-index: 0;"></div>

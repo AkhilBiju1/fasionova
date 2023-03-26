@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
+<section>
+    <div style="height: 60px;"></div>
+    <div>
+        <img class="wave" src="images/wave.png">
+        <div class="container">
+            <div class="img">
+                <img src="images/bg.svg">
+            </div>
+            <div class="login-content">
+                <form class="login" action="/login" method="post">
+                    <img src="images/avatar.svg">
+                    <h2 style="color:  #1b4d86;" class="title">Welcome</h2>
+                    <div class="input-div one">
+                        <div class="i">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Email</h5>
+                            <input type="email"  name="email" class="input"
+                                aria-describedby="emailHelp">
+                        </div>
+                    </div>
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Password</h5>
+                            <input  name="pass" type="password" class="input">
+                           
+                        </div>
+                       
+                    </div>
+                    <div class="signin">
+                       
+                        <a href="/signup">Create new account ?</a>
+                        {{#if loginErr}}
+                        <small id="emailHelp">{{loginErr}}</small>
+                        {{/if}}
+                    </div>
+                    <input  type="submit" class="butn mb-2" value="Login">
+                </form>
+            </div>
+        </div>
+       
+    </div>
+<script src="/javascripts/login.js"></script>
+</section>
